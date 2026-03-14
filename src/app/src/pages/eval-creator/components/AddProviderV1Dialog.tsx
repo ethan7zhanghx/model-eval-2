@@ -266,10 +266,10 @@ export default function AddProviderV1Dialog({
             {isEditing
               ? IS_V1_MINIMAL_MODE
                 ? '编辑模型来源'
-                : 'Edit model source'
+                : '编辑模型来源'
               : IS_V1_MINIMAL_MODE
                 ? '添加模型来源'
-                : 'Add model source'}
+                : '添加模型来源'}
           </DialogTitle>
           <DialogDescription>
             {IS_V1_MINIMAL_MODE
@@ -341,7 +341,7 @@ export default function AddProviderV1Dialog({
                       {isFetchingModels ? (
                         <>
                           <Spinner className="size-4 mr-2" />
-                          {IS_V1_MINIMAL_MODE ? '刷新中' : 'Refreshing'}
+                          {IS_V1_MINIMAL_MODE ? '刷新中' : '刷新中'}
                         </>
                       ) : IS_V1_MINIMAL_MODE ? (
                         '刷新模型列表'

@@ -29,7 +29,7 @@ export default function SetScoreDialog({
   const handleSave = () => {
     const parsed = Number.parseFloat(scoreValue);
     if (Number.isNaN(parsed) || parsed < 0.0 || parsed > 1.0) {
-      setError('Please enter a value between 0.0 and 1.0.');
+      setError('请输入 0.0 到 1.0 之间的分数。');
       return;
     }
     onSave(parsed);
@@ -45,11 +45,11 @@ export default function SetScoreDialog({
     <Dialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
       <DialogContent className="max-w-sm">
         <DialogHeader>
-          <DialogTitle>Set test score</DialogTitle>
+          <DialogTitle>设置测试分数</DialogTitle>
         </DialogHeader>
         <div className="space-y-2 py-2">
           <label htmlFor="score-input" className="text-sm text-muted-foreground">
-            Score (0.0 - 1.0)
+            分数（0.0 - 1.0）
           </label>
           <Input
             id="score-input"
@@ -69,9 +69,9 @@ export default function SetScoreDialog({
         </div>
         <DialogFooter>
           <Button onClick={onClose} variant="outline">
-            Cancel
+            取消
           </Button>
-          <Button onClick={handleSave}>Save</Button>
+          <Button onClick={handleSave}>保存</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

@@ -50,6 +50,19 @@ export const SELECT_OPERATORS: { value: SelectOperator; label: string }[] = [
   { value: 'isAny', label: '属于任一项' },
 ];
 
+const FILTER_OPERATOR_LABELS: Record<FilterOperator, string> = {
+  contains: '包含',
+  equals: '等于',
+  startsWith: '开头是',
+  endsWith: '结尾是',
+  gt: '>',
+  gte: '>=',
+  lt: '<',
+  lte: '<=',
+  notEquals: '不等于',
+  isAny: '属于任一项',
+};
+
 export interface FilterOption {
   label: string;
   value: string;
@@ -299,7 +312,7 @@ function SelectFilterInput({
             >
               {selectedValues.length > 0 ? (
                 <span className="truncate">
-                  {selectedValues.length} selected
+                  已选 {selectedValues.length} 项
                   {selectedValues.length <= 2 &&
                     `: ${selectedValues.map((v) => options.find((o) => o.value === v)?.label || v).join(', ')}`}
                 </span>
@@ -573,7 +586,7 @@ export function DataTableHeaderFilter<TData>({ column }: { column: Column<TData,
                     >
                       {multiSelectValues.length > 0 ? (
                         <span className="truncate">
-                          {multiSelectValues.length} selected
+                          已选 {multiSelectValues.length} 项
                           {multiSelectValues.length <= 2 &&
                             `: ${multiSelectValues
                               .map(
@@ -1068,7 +1081,7 @@ export function DataTableFilter<TData>({ table, columnFilters }: DataTableFilter
                   <div className="flex min-h-8 h-8 flex-1 items-center border rounded-md bg-gray-100/50 dark:bg-gray-800/50 px-3 text-sm">
                     {filter.isSelectFilter ? (
                       <span className="truncate">
-                        {`${filter.operator} ${
+                        {`${FILTER_OPERATOR_LABELS[filter.operator]} ${
                           Array.isArray(filter.value)
                             ? filter.value.length <= 2
                               ? filter.value
@@ -1078,12 +1091,14 @@ export function DataTableFilter<TData>({ table, columnFilters }: DataTableFilter
                                         ?.label || entry,
                                   )
                                   .join(', ')
-                              : `${filter.value.length} selected`
+                              : `已选 ${filter.value.length} 项`
                             : filter.value
                         }`}
                       </span>
                     ) : (
-                      <span className="truncate">{`${filter.operator} ${filter.value}`}</span>
+                      <span className="truncate">
+                        {`${FILTER_OPERATOR_LABELS[filter.operator]} ${filter.value}`}
+                      </span>
                     )}
                   </div>
                   <Button

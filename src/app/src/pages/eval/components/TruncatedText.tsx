@@ -132,7 +132,7 @@ function TruncatedText({ text: rawText, maxLength }: TruncatedTextProps) {
             {isTruncated ? (
               <span style={{ letterSpacing: '0.1rem' }}>...</span>
             ) : (
-              <span>Show less</span>
+              <span>收起</span>
             )}
             <svg
               width="12"

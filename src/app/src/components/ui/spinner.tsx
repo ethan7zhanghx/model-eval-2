@@ -19,7 +19,7 @@ function Spinner({ className, size = 'md', ref, ...props }: SpinnerProps) {
     <div
       ref={ref}
       role="progressbar"
-      aria-label="Loading"
+      aria-label="加载中"
       className={cn('flex items-center justify-center', className)}
       {...props}
     >

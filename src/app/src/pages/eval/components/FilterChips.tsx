@@ -157,7 +157,7 @@ export function FilterChips() {
               </button>
             </TooltipTrigger>
             <TooltipContent>
-              {isActive ? 'Click to remove filter' : `${passRate}% pass rate — Click to filter`}
+              {isActive ? '点击移除筛选' : `${passRate}% 通过率 — 点击筛选`}
             </TooltipContent>
           </Tooltip>
         );
@@ -174,11 +174,11 @@ export function FilterChips() {
           {isExpanded ? (
             <>
               <ChevronUp className="size-3" />
-              Show less
+              收起
             </>
           ) : (
             <>
-              <ChevronDown className="size-3" />+{hiddenCount} more
+              <ChevronDown className="size-3" />再显示 {hiddenCount} 项
             </>
           )}
         </button>

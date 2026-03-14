@@ -20,21 +20,21 @@ import { useDebounce } from 'use-debounce';
 import { type ResultsFilter, useTableStore } from '../store';
 
 const TYPE_LABELS: Record<ResultsFilter['type'], string> = {
-  metric: 'Metric',
-  metadata: 'Metadata',
-  plugin: 'Plugin',
-  strategy: 'Strategy',
-  severity: 'Severity',
-  policy: 'Policy',
+  metric: '指标',
+  metadata: '元数据',
+  plugin: '插件',
+  strategy: '策略',
+  severity: '严重级别',
+  policy: '策略规则',
 };
 
 const OPERATOR_LABELS: Record<ResultsFilter['operator'], string> = {
-  equals: 'equals',
-  not_equals: 'not equals',
-  contains: 'contains',
-  not_contains: 'not contains',
-  exists: 'exists',
-  is_defined: 'is defined',
+  equals: '等于',
+  not_equals: '不等于',
+  contains: '包含',
+  not_contains: '不包含',
+  exists: '存在',
+  is_defined: '已定义',
   eq: '=',
   neq: '≠',
   gt: '>',
@@ -323,19 +323,19 @@ function FilterRow({
   const valuePlaceholder = useMemo(() => {
     switch (filter.type) {
       case 'plugin':
-        return 'Choose plugin...';
+        return '请选择插件...';
       case 'strategy':
-        return 'Choose strategy...';
+        return '请选择策略...';
       case 'severity':
-        return 'Choose severity...';
+        return '请选择严重级别...';
       case 'policy':
-        return 'Choose policy...';
+        return '请选择策略规则...';
       case 'metric':
         return '0.0';
       case 'metadata':
-        return metadataKey ? `Enter ${metadataKey} value...` : 'Select a key first';
+        return metadataKey ? `请输入 ${metadataKey} 的值...` : '请先选择字段';
       default:
-        return 'Enter value...';
+        return '请输入筛选值...';
     }
   }, [filter.type, metadataKey]);
 
@@ -354,8 +354,8 @@ function FilterRow({
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="and">and</SelectItem>
-            <SelectItem value="or">or</SelectItem>
+            <SelectItem value="and">且</SelectItem>
+            <SelectItem value="or">或</SelectItem>
           </SelectContent>
         </Select>
       ) : null}
@@ -381,13 +381,13 @@ function FilterRow({
       {filter.type === 'metadata' &&
         (metadataKeysLoading ? (
           <div className="relative w-[140px]">
-            <Input value="" placeholder="Loading keys..." disabled className="h-8 pr-8" />
+            <Input value="" placeholder="正在加载字段..." disabled className="h-8 pr-8" />
             <Spinner className="size-3 absolute right-2 top-2.5" />
           </div>
         ) : metadataKeys && metadataKeys.length > 0 ? (
           <Select value={filter.field || ''} onValueChange={handleFieldChange}>
             <SelectTrigger className="h-8 w-[140px] shrink-0">
-              <SelectValue placeholder="Choose key..." />
+              <SelectValue placeholder="请选择字段..." />
             </SelectTrigger>
             <SelectContent>
               {metadataKeys.map((key) => (
@@ -401,7 +401,7 @@ function FilterRow({
           <Input
             value={filter.field || ''}
             onChange={(e) => handleFieldChange(e.target.value)}
-            placeholder={metadataKeysError ? 'Error loading keys' : 'Enter key name...'}
+            placeholder={metadataKeysError ? '字段加载失败' : '请输入字段名...'}
             className={cn('h-8 w-[140px]', metadataKeysError && 'border-destructive')}
           />
         ))}
@@ -410,7 +410,7 @@ function FilterRow({
       {filter.type === 'metric' && filters.options.metric.length > 0 && (
         <Select value={filter.field || ''} onValueChange={handleFieldChange}>
           <SelectTrigger className="h-8 w-[140px] shrink-0">
-            <SelectValue placeholder="Choose metric..." />
+            <SelectValue placeholder="请选择指标..." />
           </SelectTrigger>
           <SelectContent>
             {filters.options.metric.map((metric) => (

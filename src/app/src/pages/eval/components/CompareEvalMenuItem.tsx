@@ -11,7 +11,7 @@ function CompareEvalMenuItem({ onClick }: CompareEvalMenuItemProps) {
       <DropdownMenuItemIcon>
         <GitCompareArrows className="size-4" />
       </DropdownMenuItemIcon>
-      Compare with another eval
+      与另一条评测对比
     </DropdownMenuItem>
   );
 }

@@ -588,7 +588,7 @@ function PerformanceOverTimeChart({ evalId }: ChartProps) {
         y: {
           title: {
             display: true,
-            text: 'Pass Rate (%)',
+            text: '通过率 (%)',
           },
         },
       },
@@ -612,10 +612,10 @@ function PerformanceOverTimeChart({ evalId }: ChartProps) {
                   (evalData.metrics.testPassCount + evalData.metrics.testFailCount)) *
                 100;
               return [
-                `Label: ${evalData.label}`,
-                `Provider: ${evalData.provider}`,
-                `Pass Rate: ${passRate.toFixed(2)}%`,
-                `Score: ${evalData.metrics.score.toFixed(2)}`,
+                `名称：${evalData.label}`,
+                `模型来源：${evalData.provider}`,
+                `通过率：${passRate.toFixed(2)}%`,
+                `分数：${evalData.metrics.score.toFixed(2)}`,
               ];
             },
           },

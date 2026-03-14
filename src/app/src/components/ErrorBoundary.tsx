@@ -70,10 +70,10 @@ class ErrorBoundary extends React.Component<Props, State> {
             <AlertCircle className="size-4" />
             <AlertContent>
               <AlertTitle>
-                Something went wrong {this.props.name ? `in ${this.props.name}` : ''}.
+                页面出现异常{this.props.name ? `（${this.props.name}）` : ''}。
               </AlertTitle>
               <AlertDescription className="text-muted-foreground">
-                Please try reloading the page.
+                请先尝试刷新页面。
               </AlertDescription>
             </AlertContent>
             <Button
@@ -83,7 +83,7 @@ class ErrorBoundary extends React.Component<Props, State> {
               className="shrink-0 gap-1"
             >
               <RefreshCw className="size-3" />
-              Reload Page
+              刷新页面
             </Button>
           </Alert>
 
@@ -95,12 +95,12 @@ class ErrorBoundary extends React.Component<Props, State> {
                     {this.state.showDetails ? (
                       <>
                         <ChevronUp className="size-4" />
-                        Hide Error Details
+                        隐藏错误详情
                       </>
                     ) : (
                       <>
                         <ChevronDown className="size-4" />
-                        Show Error Details
+                        查看错误详情
                       </>
                     )}
                   </Button>
@@ -112,13 +112,13 @@ class ErrorBoundary extends React.Component<Props, State> {
                       'bg-zinc-100 dark:bg-zinc-900',
                     )}
                   >
-                    <h6 className="text-base font-semibold mb-2">Error Details:</h6>
+                    <h6 className="text-base font-semibold mb-2">错误详情：</h6>
                     <pre className="m-0 whitespace-pre-wrap text-red-700 dark:text-red-400">
                       {this.state.error?.name}: {this.state.error?.message}
                     </pre>
                     {this.state.error?.stack && (
                       <>
-                        <h6 className="text-base font-semibold mt-4 mb-2">Stack Trace:</h6>
+                        <h6 className="text-base font-semibold mt-4 mb-2">调用栈：</h6>
                         <pre className="m-0 whitespace-pre-wrap text-muted-foreground">
                           {this.state.error.stack}
                         </pre>
@@ -126,7 +126,7 @@ class ErrorBoundary extends React.Component<Props, State> {
                     )}
                     {this.state.errorInfo && (
                       <>
-                        <h6 className="text-base font-semibold mt-4 mb-2">Component Stack:</h6>
+                        <h6 className="text-base font-semibold mt-4 mb-2">组件栈：</h6>
                         <pre className="m-0 whitespace-pre-wrap text-muted-foreground">
                           {this.state.errorInfo.componentStack}
                         </pre>

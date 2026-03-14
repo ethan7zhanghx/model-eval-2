@@ -54,7 +54,7 @@ export function AudioPlayer({ data, format = 'mp3', style, testId, transcript }:
   const audioUrl = resolveAudioUrlSync(data, format);
 
   if (!audioUrl) {
-    return <span className="text-xs text-destructive">Failed to load audio</span>;
+    return <span className="text-xs text-destructive">音频加载失败</span>;
   }
 
   return (
@@ -65,11 +65,11 @@ export function AudioPlayer({ data, format = 'mp3', style, testId, transcript }:
         data-testid={testId || 'audio-player'}
       >
         <source src={audioUrl} type={`audio/${format}`} />
-        Your browser does not support the audio element.
+        当前浏览器不支持音频播放。
       </audio>
       {transcript && (
         <div className="transcript" style={{ marginTop: '4px', fontSize: '0.875rem' }}>
-          <strong>Transcript:</strong> {transcript}
+          <strong>转写文本：</strong> {transcript}
         </div>
       )}
     </div>
@@ -93,13 +93,13 @@ export function ImageDisplay({
   const imageUrl = resolveImageUrlSync(data, format);
 
   if (!imageUrl) {
-    return <span className="text-xs text-destructive">Failed to load image</span>;
+    return <span className="text-xs text-destructive">图片加载失败</span>;
   }
 
   return (
     <img
       src={imageUrl}
-      alt={alt || 'Media content'}
+      alt={alt || '媒体内容'}
       style={
         style || {
           maxWidth: '100%',
@@ -120,7 +120,7 @@ export function VideoPlayer({ data, format = 'mp4', style, testId }: MediaPlayer
   const videoUrl = resolveVideoUrlSync(data, format);
 
   if (!videoUrl) {
-    return <span className="text-xs text-destructive">Failed to load video</span>;
+    return <span className="text-xs text-destructive">视频加载失败</span>;
   }
 
   return (
@@ -130,7 +130,7 @@ export function VideoPlayer({ data, format = 'mp4', style, testId }: MediaPlayer
       data-testid={testId || 'video-player'}
     >
       <source src={videoUrl} type={`video/${format}`} />
-      Your browser does not support the video element.
+      当前浏览器不支持视频播放。
     </video>
   );
 }

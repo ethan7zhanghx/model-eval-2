@@ -720,26 +720,26 @@ function EvalOutputCell({
 
   let passFailText;
   if (errorCount === 1) {
-    passFailText = 'ERROR';
+    passFailText = '错误';
   } else if (failCount === 1 && passCount === 1) {
     passFailText = (
       <>
-        {`${failCount} FAIL`} {`${passCount} PASS`}
+        {`${failCount} 失败`} {`${passCount} 通过`}
       </>
     );
   } else {
     let failText = '';
     if (failCount > 1 || (passCount > 1 && failCount > 0)) {
-      failText = `${failCount} FAIL`;
+      failText = `${failCount} 失败`;
     } else if (failCount === 1) {
-      failText = 'FAIL';
+      failText = '失败';
     }
 
     let passText = '';
     if (passCount > 1 || (failCount > 1 && passCount > 0)) {
-      passText = `${passCount} PASS`;
+      passText = `${passCount} 通过`;
     } else if (passCount === 1 && failCount === 0) {
-      passText = 'PASS';
+      passText = '通过';
     }
     const separator = failText && passText ? ' ' : '';
 
@@ -761,9 +761,9 @@ function EvalOutputCell({
 
     return output.gradingResult.componentResults
       .map((result, index) => {
-        const displayName = result.assertion?.metric || result.assertion?.type || 'unknown';
+        const displayName = result.assertion?.metric || result.assertion?.type || '未知';
         const value = result.assertion?.value || '';
-        return `Assertion ${index + 1} (${displayName}): ${value}`;
+        return `断言 ${index + 1}（${displayName}）：${value}`;
       })
       .join('\n\n');
   };
@@ -783,11 +783,11 @@ function EvalOutputCell({
           : null;
     if (providerId) {
       providerOverride = (
-        <Tooltip>
+          <Tooltip>
           <TooltipTrigger asChild>
             <span className="provider pill">{providerId}</span>
           </TooltipTrigger>
-          <TooltipContent side="top">Model override for this test</TooltipContent>
+          <TooltipContent side="top">该样本使用了单独的模型配置</TooltipContent>
         </Tooltip>
       );
     }
@@ -807,17 +807,17 @@ function EvalOutputCell({
     <div className="cell-detail">
       {tokenUsageDisplay && (
         <div className="stat-item">
-          <strong>Tokens:</strong> {tokenUsageDisplay}
+          <strong>Tokens：</strong> {tokenUsageDisplay}
         </div>
       )}
       {latencyDisplay && (
         <div className="stat-item">
-          <strong>Latency:</strong> {latencyDisplay}
+          <strong>延迟：</strong> {latencyDisplay}
         </div>
       )}
       {tokPerSecDisplay && (
         <div className="stat-item">
-          <strong>Tokens/Sec:</strong> {tokPerSecDisplay}
+          <strong>Tokens/秒：</strong> {tokPerSecDisplay}
         </div>
       )}
       {costDisplay && (

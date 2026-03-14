@@ -156,7 +156,7 @@ const CustomMetrics = ({
           onClick={onShowMore ?? (() => setShowAllMetrics(!showAllMetrics))}
           aria-expanded={showAllMetrics}
         >
-          {showAllMetrics ? 'Show less...' : 'Show more...'}
+          {showAllMetrics ? '收起更多...' : '展开更多...'}
         </button>
       )}
     </div>

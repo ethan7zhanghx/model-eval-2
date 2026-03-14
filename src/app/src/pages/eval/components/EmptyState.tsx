@@ -30,7 +30,7 @@ const EmptyState = () => {
           {!IS_V1_MINIMAL_MODE && (
             <Button variant="outline" size="lg" onClick={() => navigate('/redteam/setup')}>
               <Shield className="size-5 mr-2" />
-              Create Red Team
+              创建红队任务
             </Button>
           )}
         </div>

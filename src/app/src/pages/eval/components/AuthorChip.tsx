@@ -75,7 +75,7 @@ export const AuthorChip = ({
     return (
       <div className="flex items-center h-8 border border-input rounded-md bg-white dark:bg-zinc-900 overflow-hidden">
         <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground pl-3 shrink-0">
-          AUTHOR
+          作者
         </span>
         <Input
           ref={inputRef}
@@ -85,7 +85,7 @@ export const AuthorChip = ({
           onKeyDown={handleKeyDown}
           disabled={isLoading}
           className="h-auto py-1 border-0 focus-visible:ring-0 focus-visible:ring-offset-0 text-xs min-w-[150px]"
-          placeholder="email@example.com"
+          placeholder="请输入邮箱"
         />
         <button
           type="button"
@@ -113,7 +113,7 @@ export const AuthorChip = ({
     <Tooltip>
       <TooltipTrigger asChild>
         <Chip
-          label="AUTHOR"
+          label="作者"
           onClick={handleStartEdit}
           disabled={!editable}
           interactive={editable}
@@ -121,11 +121,11 @@ export const AuthorChip = ({
             editable ? <Pencil className="size-3.5 text-muted-foreground" /> : undefined
           }
         >
-          {author || 'Unknown'}
+          {author || '未设置'}
         </Chip>
       </TooltipTrigger>
       <TooltipContent>
-        {editable ? (author ? 'Click to edit author' : 'Click to set author') : 'Author'}
+        {editable ? (author ? '点击编辑作者' : '点击设置作者') : '作者'}
       </TooltipContent>
     </Tooltip>
   );

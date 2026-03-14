@@ -107,7 +107,7 @@ const MetricsTable = ({ onClose }: { onClose: () => void }) => {
     const cols: ColumnDef<MetricRow>[] = [
       {
         accessorKey: 'metric',
-        header: 'Metric',
+        header: '指标',
         size: 300,
         cell: ({ getValue }) => {
           const value = getValue<string>();
@@ -131,7 +131,7 @@ const MetricsTable = ({ onClose }: { onClose: () => void }) => {
 
       cols.push({
         accessorKey: `${columnId}_pass_rate`,
-        header: `${providerName} - Pass Rate`,
+        header: `${providerName} - 通过率`,
         size: 150,
         cell: ({ row }) => {
           const metricScore = row.original[columnId] as MetricScore;
@@ -156,7 +156,7 @@ const MetricsTable = ({ onClose }: { onClose: () => void }) => {
       });
       cols.push({
         accessorKey: `${columnId}_score`,
-        header: `${providerName} - Pass Count`,
+        header: `${providerName} - 通过数`,
         size: 120,
         cell: ({ row }) => {
           const metricScore = row.original[columnId] as MetricScore;
@@ -166,7 +166,7 @@ const MetricsTable = ({ onClose }: { onClose: () => void }) => {
       });
       cols.push({
         accessorKey: `${columnId}_count`,
-        header: `${providerName} - Test Count`,
+        header: `${providerName} - 测试数`,
         size: 120,
         cell: ({ row }) => {
           const metricScore = row.original[columnId] as MetricScore;
@@ -178,7 +178,7 @@ const MetricsTable = ({ onClose }: { onClose: () => void }) => {
 
     cols.push({
       accessorKey: 'avg_pass_rate',
-      header: 'Avg. Pass Rate',
+      header: '平均通过率',
       size: 150,
       cell: ({ row }) => {
         let promptCount = 0;
@@ -276,7 +276,7 @@ const MetricsTable = ({ onClose }: { onClose: () => void }) => {
       getRowId={(row) => row.id}
       initialSorting={[{ id: 'metric', desc: false }]}
       initialPageSize={50}
-      emptyMessage="No metrics available"
+      emptyMessage="暂无可展示的指标"
       showToolbar
       showFilter
       showPagination
@@ -293,10 +293,10 @@ export default function CustomMetricsDialog({
   onClose: () => void;
 }) {
   return (
-    <Dialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
+      <Dialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
       <DialogContent className="max-w-[90vw] h-[80vh] overflow-auto">
         <DialogHeader>
-          <DialogTitle>Custom Metrics</DialogTitle>
+          <DialogTitle>自定义指标</DialogTitle>
         </DialogHeader>
         <MetricsTable onClose={onClose} />
       </DialogContent>

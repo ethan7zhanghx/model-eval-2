@@ -34,6 +34,7 @@ const EnhancedRangeSlider = ({
   tooltipText,
   icon,
 }: EnhancedRangeSliderProps) => {
+  const unlimitedLabel = '不限制';
   // Ensure value is always a valid number
   const safeValue = value === null || value === undefined || Number.isNaN(value) ? min : value;
   const [localValue, setLocalValue] = useState(safeValue);
@@ -54,14 +55,14 @@ const EnhancedRangeSlider = ({
   // biome-ignore lint/correctness/useExhaustiveDependencies: intentional
   useEffect(() => {
     setLocalValue(safeValue);
-    setInputValue(isUnlimited ? 'Unlimited' : String(safeValue));
+    setInputValue(isUnlimited ? unlimitedLabel : String(safeValue));
   }, [safeValue, max, unlimited, isUnlimited]);
 
   const handleSliderChange = useCallback(
     (values: number[]) => {
       const newSafeValue = values[0];
       setLocalValue(newSafeValue);
-      setInputValue(unlimited && newSafeValue === max ? 'Unlimited' : String(newSafeValue));
+      setInputValue(unlimited && newSafeValue === max ? unlimitedLabel : String(newSafeValue));
     },
     [max, unlimited],
   );
@@ -81,7 +82,7 @@ const EnhancedRangeSlider = ({
 
   const handleInputBlur = useCallback(() => {
     setIsEditing(false);
-    if (inputValue === 'Unlimited' && unlimited) {
+    if (inputValue === unlimitedLabel && unlimited) {
       setLocalValue(max);
       onChange(max);
       return;
@@ -90,7 +91,7 @@ const EnhancedRangeSlider = ({
     const parsedValue = Number.parseInt(inputValue, 10);
     if (Number.isNaN(parsedValue)) {
       // Revert to current value if input is invalid
-      setInputValue(isUnlimited ? 'Unlimited' : String(localValue));
+      setInputValue(isUnlimited ? unlimitedLabel : String(localValue));
     } else {
       const clampedValue = Math.min(Math.max(parsedValue, min), max);
       setLocalValue(clampedValue);
@@ -111,7 +112,7 @@ const EnhancedRangeSlider = ({
         handleInputBlur();
       } else if (e.key === 'Escape') {
         setIsEditing(false);
-        setInputValue(isUnlimited ? 'Unlimited' : String(localValue));
+        setInputValue(isUnlimited ? unlimitedLabel : String(localValue));
       }
     },
     [handleInputBlur, isUnlimited, localValue],
@@ -143,7 +144,7 @@ const EnhancedRangeSlider = ({
           )}
           onClick={handleEditClick}
           role="textbox"
-          aria-label={`Enter ${label.toLowerCase()} value`}
+          aria-label={`输入${label}数值`}
         >
           {isEditing ? (
             <div className="flex items-center">
@@ -154,13 +155,13 @@ const EnhancedRangeSlider = ({
                 onBlur={handleInputBlur}
                 onKeyDown={handleInputKeyDown}
                 className="h-auto p-0 text-center text-[0.95rem] font-medium border-0 shadow-none focus-visible:ring-0"
-                aria-label={`Enter ${label.toLowerCase()} value`}
+                aria-label={`输入${label}数值`}
               />
               {unit && <span className="text-sm text-muted-foreground ml-1">{unit}</span>}
             </div>
           ) : (
             <span className="font-medium">
-              {isUnlimited ? 'Unlimited' : `${localValue}${unit}`}
+              {isUnlimited ? unlimitedLabel : `${localValue}${unit}`}
             </span>
           )}
         </div>
@@ -171,7 +172,7 @@ const EnhancedRangeSlider = ({
               <button
                 type="button"
                 className="p-1 text-primary/70 hover:text-primary hover:bg-primary/10 rounded"
-                aria-label={`Information about ${label.toLowerCase()}`}
+                aria-label={`${label}说明`}
               >
                 <Info className="size-4" />
               </button>
@@ -195,12 +196,12 @@ const EnhancedRangeSlider = ({
           aria-valuemin={min}
           aria-valuemax={max}
           aria-valuenow={localValue}
-          aria-valuetext={isUnlimited ? 'Unlimited' : `${localValue}${unit}`}
+          aria-valuetext={isUnlimited ? unlimitedLabel : `${localValue}${unit}`}
         />
         {/* Manual marks below the slider */}
         <div className="flex justify-between mt-1 text-xs text-muted-foreground">
           <span>{`${min}${unit}`}</span>
-          <span>{unlimited ? 'Unlimited' : `${max}${unit}`}</span>
+          <span>{unlimited ? unlimitedLabel : `${max}${unit}`}</span>
         </div>
       </div>
     </div>

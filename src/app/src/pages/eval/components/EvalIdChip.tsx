@@ -52,7 +52,7 @@ export const EvalIdChip = ({ evalId, onCopy }: EvalIdChipProps) => {
           {evalId}
         </Chip>
       </TooltipTrigger>
-      <TooltipContent>{copied ? 'Copied!' : 'Click to copy ID'}</TooltipContent>
+      <TooltipContent>{copied ? '已复制' : '点击复制评测 ID'}</TooltipContent>
     </Tooltip>
   );
 };

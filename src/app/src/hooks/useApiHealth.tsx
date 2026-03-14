@@ -30,7 +30,7 @@ export function useApiHealth() {
       } catch {
         return {
           status: 'blocked',
-          message: 'Network error: Unable to check API health',
+          message: '网络异常：无法检查评测服务连接状态',
         };
       }
     },

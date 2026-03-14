@@ -29,11 +29,11 @@ export const MetricFilterSelector = () => {
 
   return (
     <Select value={selectedMetric ?? 'all'} onValueChange={handleChange}>
-      <SelectTrigger className="min-w-[180px] h-9" aria-label="Filter by Metric">
-        <SelectValue placeholder="Filter by Metric" />
+      <SelectTrigger className="min-w-[180px] h-9" aria-label="按指标筛选">
+        <SelectValue placeholder="按指标筛选" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="all">All metrics</SelectItem>
+        <SelectItem value="all">全部指标</SelectItem>
         {availableMetrics.map((metric) => (
           <SelectItem key={metric} value={metric}>
             {metric}

@@ -54,7 +54,7 @@ const JsonTextField = ({
         {...props}
       />
       {(error || helperText) && (
-        <HelperText error={error}>{error ? 'Invalid JSON' : helperText}</HelperText>
+        <HelperText error={error}>{error ? 'JSON 格式无效' : helperText}</HelperText>
       )}
     </div>
   );

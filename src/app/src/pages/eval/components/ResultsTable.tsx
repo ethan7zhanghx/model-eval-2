@@ -96,19 +96,19 @@ function StorageRefAudioPlayer({ data, format = 'mp3' }: { data: string; format?
     return (
       <div className="flex items-center gap-2 py-0.5">
         <Spinner className="size-4" />
-        <span className="text-xs text-muted-foreground">Loading audio...</span>
+        <span className="text-xs text-muted-foreground">音频加载中...</span>
       </div>
     );
   }
 
   if (!audioUrl) {
-    return <span className="text-xs text-destructive">Failed to load audio</span>;
+    return <span className="text-xs text-destructive">音频加载失败</span>;
   }
 
   return (
     <audio controls style={{ maxWidth: '100%', height: '32px' }}>
       <source src={audioUrl} type={`audio/${format}`} />
-      Your browser does not support the audio element.
+      当前浏览器不支持音频播放。
     </audio>
   );
 }

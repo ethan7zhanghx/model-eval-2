@@ -91,7 +91,7 @@ const ConfigureEnvButton = () => {
       normalizedEnv.OPENROUTER_API_KEY &&
       !normalizedEnv.OPENROUTER_API_KEY.startsWith('sk-or-v1-')
     ) {
-      showToast('OpenRouter key 格式不对：应以 sk-or-v1- 开头。', 'error');
+      showToast('OpenRouter Key 格式不正确：应以 sk-or-v1- 开头。', 'error');
       return;
     }
 
@@ -141,19 +141,19 @@ const ConfigureEnvButton = () => {
               <>
                 <EnvSection title="OpenAI" defaultOpen>
                   <EnvField
-                    label="OpenAI API key"
+                    label="OpenAI API Key"
                     envKey="OPENAI_API_KEY"
                     value={env.OPENAI_API_KEY || ''}
                     onChange={handleEnvChange}
                   />
                   <EnvField
-                    label="OpenAI API host"
+                    label="OpenAI API Host"
                     envKey="OPENAI_API_HOST"
                     value={env.OPENAI_API_HOST || ''}
                     onChange={handleEnvChange}
                   />
                   <EnvField
-                    label="OpenAI organization"
+                    label="OpenAI 组织 ID"
                     envKey="OPENAI_ORGANIZATION"
                     value={env.OPENAI_ORGANIZATION || ''}
                     onChange={handleEnvChange}
@@ -162,7 +162,7 @@ const ConfigureEnvButton = () => {
 
                 <EnvSection title="Azure">
                   <EnvField
-                    label="Azure API key"
+                    label="Azure API Key"
                     envKey="AZURE_API_KEY"
                     value={env.AZURE_API_KEY || env.AZURE_OPENAI_API_KEY || ''}
                     onChange={handleEnvChange}
@@ -171,7 +171,7 @@ const ConfigureEnvButton = () => {
 
                 <EnvSection title="Amazon Bedrock">
                   <EnvField
-                    label="Bedrock Region"
+                    label="Bedrock 区域"
                     envKey="AWS_BEDROCK_REGION"
                     value={env.AWS_BEDROCK_REGION || ''}
                     onChange={handleEnvChange}
@@ -180,7 +180,7 @@ const ConfigureEnvButton = () => {
 
                 <EnvSection title="Anthropic">
                   <EnvField
-                    label="Anthropic API key"
+                    label="Anthropic API Key"
                     envKey="ANTHROPIC_API_KEY"
                     value={env.ANTHROPIC_API_KEY || ''}
                     onChange={handleEnvChange}
@@ -195,13 +195,13 @@ const ConfigureEnvButton = () => {
                     onChange={handleEnvChange}
                   />
                   <EnvField
-                    label="Vertex Project ID"
+                    label="Vertex 项目 ID"
                     envKey="VERTEX_PROJECT_ID"
                     value={env.VERTEX_PROJECT_ID || ''}
                     onChange={handleEnvChange}
                   />
                   <EnvField
-                    label="Vertex Region"
+                    label="Vertex 区域"
                     envKey="VERTEX_REGION"
                     value={env.VERTEX_REGION || ''}
                     onChange={handleEnvChange}
@@ -210,7 +210,7 @@ const ConfigureEnvButton = () => {
 
                 <EnvSection title="Replicate">
                   <EnvField
-                    label="Replicate API key"
+                    label="Replicate API Key"
                     envKey="REPLICATE_API_KEY"
                     value={env.REPLICATE_API_KEY || ''}
                     onChange={handleEnvChange}

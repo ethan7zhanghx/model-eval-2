@@ -70,12 +70,12 @@ function AssertionResults({ gradingResults }: { gradingResults?: GradingResult[]
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-border bg-muted/50">
-            {hasMetrics && <th className="px-4 py-3 text-left font-semibold">Metric</th>}
-            <th className="px-4 py-3 text-left font-semibold">Pass</th>
-            <th className="px-4 py-3 text-left font-semibold">Score</th>
-            <th className="px-4 py-3 text-left font-semibold">Type</th>
-            <th className="px-4 py-3 text-left font-semibold">Value</th>
-            <th className="px-4 py-3 text-left font-semibold">Reason</th>
+            {hasMetrics && <th className="px-4 py-3 text-left font-semibold">指标</th>}
+            <th className="px-4 py-3 text-left font-semibold">结果</th>
+            <th className="px-4 py-3 text-left font-semibold">分数</th>
+            <th className="px-4 py-3 text-left font-semibold">类型</th>
+            <th className="px-4 py-3 text-left font-semibold">值</th>
+            <th className="px-4 py-3 text-left font-semibold">原因</th>
           </tr>
         </thead>
         <tbody>
@@ -114,7 +114,7 @@ function AssertionResults({ gradingResults }: { gradingResults?: GradingResult[]
                       size="icon"
                       onClick={(e) => copyAssertionToClipboard(valueKey, value, e)}
                       className="absolute right-2 top-2 size-7 bg-background shadow-sm hover:shadow"
-                      aria-label={`Copy assertion value ${i}`}
+                      aria-label={`复制断言值 ${i + 1}`}
                     >
                       {copiedAssertions[valueKey] ? (
                         <Check className="size-3.5" />
@@ -140,7 +140,7 @@ function AssertionResults({ gradingResults }: { gradingResults?: GradingResult[]
                           copyAssertionToClipboard(`reason-${i}`, result.reason || '', e);
                         }}
                         className="absolute right-2 top-2 size-7 bg-background shadow-sm hover:shadow"
-                        aria-label={`Copy assertion reason ${i}`}
+                        aria-label={`复制断言原因 ${i + 1}`}
                       >
                         {copiedAssertions[`reason-${i}`] ? (
                           <Check className="size-3.5" />
@@ -182,14 +182,14 @@ function GradingPromptSection({ gradingResults }: { gradingResults?: GradingResu
 
   return (
     <div className="mt-4">
-      <h4 className="mb-2 text-sm font-medium">Grading Prompts</h4>
+      <h4 className="mb-2 text-sm font-medium">评分 Prompts</h4>
       <div className="space-y-2">
         {promptsWithData.map((result, i) => (
           <Collapsible key={i} open={openItems[i]} onOpenChange={() => toggleItem(i)}>
             <div className="rounded-lg border border-border">
               <CollapsibleTrigger asChild>
                 <button className="flex w-full items-center justify-between px-4 py-3 text-sm hover:bg-muted/50 transition-colors">
-                  <span>{result.assertion?.type || 'Assertion'} - Full Grading Prompt</span>
+                  <span>{result.assertion?.type || '断言'} - 完整评分 Prompt</span>
                   <ChevronDown
                     className={cn(
                       'size-4 text-muted-foreground transition-transform',

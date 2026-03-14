@@ -67,6 +67,16 @@ interface ResultsChartsSectionProps {
   children: (toggleButton: React.ReactNode) => React.ReactNode;
 }
 
+const FILTER_MODE_LABELS: Record<string, string> = {
+  all: '全部',
+  failures: '失败',
+  passes: '通过',
+  errors: '错误',
+  different: '不同',
+  highlights: '高亮',
+  'user-rated': '人工评分',
+};
+
 interface AppliedFilterBadgesProps {
   filters: ResultsFilter[];
   isRedteamEval: boolean;
@@ -99,7 +109,7 @@ function getAppliedFilterLabel(
 
   if (filter.type === 'metric') {
     const operatorSymbols: Record<string, string> = {
-      is_defined: 'is defined',
+      is_defined: '已定义',
       eq: '==',
       neq: '!=',
       gt: '>',
@@ -186,10 +196,10 @@ function ResultsChartsSection({
       {renderResultsCharts
         ? IS_V1_MINIMAL_MODE
           ? '隐藏图表'
-          : 'Hide Charts'
+          : '隐藏图表'
         : IS_V1_MINIMAL_MODE
           ? '显示图表'
-          : 'Show Charts'}
+          : '显示图表'}
     </Button>
   );
 
@@ -877,7 +887,7 @@ export default function ResultsView({
                     )}
                     {filterMode !== 'all' && (
                       <Badge variant="secondary" className="text-xs h-5 gap-1">
-                        筛选：{filterMode}
+                        筛选：{FILTER_MODE_LABELS[filterMode] ?? filterMode}
                         <button
                           type="button"
                           onClick={() => setFilterMode('all')}

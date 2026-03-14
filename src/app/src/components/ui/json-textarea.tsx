@@ -44,7 +44,7 @@ const JsonTextarea = ({
         onChange={handleChange}
         className={cn('min-h-20 font-mono text-sm', error && 'border-destructive')}
       />
-      {error && <HelperText error>Invalid JSON</HelperText>}
+      {error && <HelperText error>JSON 格式无效</HelperText>}
     </div>
   );
 };

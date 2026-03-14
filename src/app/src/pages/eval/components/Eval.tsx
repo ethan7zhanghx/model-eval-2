@@ -186,7 +186,7 @@ export default function Eval({ fetchId }: EvalOptions) {
       try {
         filters = JSON.parse(filtersParam) as ResultsFilter[];
       } catch {
-        showToast('Invalid filter parameter in URL: filters must be valid JSON', 'error');
+        showToast('URL 中的筛选参数无效：filters 必须是合法 JSON', 'error');
         return;
       }
       filters.forEach((filter: ResultsFilter) => {
@@ -326,8 +326,8 @@ export default function Eval({ fetchId }: EvalOptions) {
   ]);
 
   usePageMeta({
-    title: config?.description || evalId || 'Eval',
-    description: 'View evaluation results',
+    title: config?.description || evalId || '评测结果',
+    description: '查看评测结果',
   });
 
   /**
@@ -348,7 +348,7 @@ export default function Eval({ fetchId }: EvalOptions) {
   // ================================
 
   if (failed) {
-    return <div className="notice">404 Eval not found</div>;
+    return <div className="notice">未找到对应评测结果</div>;
   }
 
   if (!loaded) {
@@ -357,7 +357,7 @@ export default function Eval({ fetchId }: EvalOptions) {
         <div>
           <Spinner className="size-5" />
         </div>
-        <div>Waiting for eval data</div>
+        <div>正在加载评测数据</div>
       </div>
     );
   }

@@ -63,7 +63,7 @@ const ChatMessage = ({ message, index }: { message: Message; index: number }) =>
           <div>
             <audio controls style={{ width: '500px' }} data-testid="audio">
               <source src={audioSource.src} type={audioSource.type || 'audio/mpeg'} />
-              Your browser does not support the audio element.
+              当前浏览器不支持音频播放。
             </audio>
           </div>
         );
@@ -95,7 +95,7 @@ const ChatMessage = ({ message, index }: { message: Message; index: number }) =>
                 }
                 type="video/mp4"
               />
-              Your browser does not support the video element.
+              当前浏览器不支持视频播放。
             </video>
           </div>
         );
@@ -118,7 +118,7 @@ const ChatMessage = ({ message, index }: { message: Message; index: number }) =>
                     data-testid="audio-with-transcript"
                   >
                     <source src={audioSource?.src} type={audioSource?.type || 'audio/mpeg'} />
-                    Your browser does not support the audio element.
+                    当前浏览器不支持音频播放。
                   </audio>
                 </div>
               )}

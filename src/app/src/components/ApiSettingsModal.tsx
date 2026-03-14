@@ -133,13 +133,13 @@ export default function ApiSettingsModal<T extends { open: boolean; onClose: () 
           <div className="space-y-2">
             <h3 className="text-base font-semibold">API 配置</h3>
             <div className="space-y-1.5">
-              <Label htmlFor="api-base-url">API Base URL</Label>
+              <Label htmlFor="api-base-url">评测 API Base URL</Label>
               <Input
                 id="api-base-url"
                 value={tempApiBaseUrl}
                 onChange={handleApiBaseUrlChange}
                 disabled={isFormDisabled}
-                placeholder="请输入 API Base URL"
+                placeholder="请输入评测 API Base URL"
               />
               <p className="text-xs text-muted-foreground">
                 Web 页面会连接到这里配置的评测 API
